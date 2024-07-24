@@ -24,7 +24,7 @@ This Python script merges all image files (JPG, PNG, BMP, etc.) in a specific di
 2. **Install the required library:**
 
     ```sh
-    pip install Pillow
+    pip3 install Pillow
     ```
 
 ## Usage
@@ -38,7 +38,7 @@ This Python script merges all image files (JPG, PNG, BMP, etc.) in a specific di
     Open a terminal or command prompt, navigate to the directory containing the script and your image files, and execute:
 
     ```sh
-    python ImagetoPDFMerger.py
+    python3 ImagetoPDFMerger.py
     ```
 
 3. **Output:**

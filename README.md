@@ -58,16 +58,18 @@ def convert_images_to_pdf(output_pdf):
     # Supported image extensions
     extensions = ['.jpg', '.jpeg', '.png', '.bmp', '.gif', '.tiff']
     
-    # Get all image files from the directory
-    image_files = [f for f in os.listdir(script_dir) if os.path.splitext(f)[1].lower() in extensions]
-    image_files.sort()  # Sort files to maintain the timeline
+    # Get all image files from the directory with their full paths
+    image_files = [os.path.join(script_dir, f) for f in os.listdir(script_dir) if os.path.splitext(f)[1].lower() in extensions]
 
     if not image_files:
         print("No image files found in the directory.")
         return
 
+    # Sort image files by their modification time
+    image_files.sort(key=lambda x: os.path.getmtime(x))
+    
     # Open images and convert them to RGB mode
-    images = [Image.open(os.path.join(script_dir, img)).convert('RGB') for img in image_files]
+    images = [Image.open(img).convert('RGB') for img in image_files]
 
     # Save all images as a PDF
     if images:
@@ -80,3 +82,4 @@ if __name__ == "__main__":
     
     # Convert images to PDF
     convert_images_to_pdf(output_pdf)
+
